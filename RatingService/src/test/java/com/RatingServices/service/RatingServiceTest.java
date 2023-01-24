@@ -84,5 +84,31 @@ class RatingServiceTest {
         //Positive Test case scenario
         assertNotNull(ratings);
     }
+    @Test
+    void getAllRating() {
+        Rating rating = new Rating();
+        rating.setRating(18);
+        rating.setRating(5);
+        rating.setFeedback("Nice ambience");
+        rating.setHotelId("7");
+        rating.setUserId("2");
+
+        Rating rating1 = new Rating();
+        rating1.setRating(1);
+        rating1.setRating(9);
+        rating1.setFeedback("Nice ambience");
+        rating1.setHotelId("2");
+        rating1.setUserId("3");
+        List<Rating> ratings = new ArrayList<>();
+
+        ratings.add(rating);
+        ratings.add(rating1);
+        when(ratingRepo.findAll()).thenReturn(ratings);
+
+        List<Rating> ratingList = ratingService.getRatings();
+        assertEquals(ratings.size(), ratingList.size());
+
+
+    }
 
 }
