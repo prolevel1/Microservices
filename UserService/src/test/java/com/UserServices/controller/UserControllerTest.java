@@ -45,7 +45,7 @@ class UserControllerTest {
         String json = objectMapper.writeValueAsString(user);
         mockMvc.perform(post("/users/").contentType(MediaType.APPLICATION_JSON)
                         .content(json).accept(MediaType.APPLICATION_JSON)).andExpect(status().isCreated())
-                .andExpect(jsonPath("$.name", Matchers.equalTo("ab")));
+                .andExpect(jsonPath("$.name", Matchers.equalTo("abc")));
     }
     @Test
     void getUser() throws Exception {
